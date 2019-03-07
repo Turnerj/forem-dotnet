@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevTo.Api.Tests", "test\Dev
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{535D1AD4-DC61-45CC-845A-304DDBBD58A3}"
 	ProjectSection(SolutionItems) = preProject
-		.gitattributes = .gitattributes
+		.appveyor.yml = .appveyor.yml
+		.codecov.yml = .codecov.yml
+		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		readme.md = readme.md
 	EndProjectSection
