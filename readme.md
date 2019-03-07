@@ -1,21 +1,44 @@
 # Dev.to API for .NET
+A basic read-only interface to [dev.to](https://dev.to/)
 
-This is a fairly basic read-only library for the blogging platform [dev.to](https://dev.to/) based on the "V0" API.
-The API this is linked isn't officially released yet so may change in the future.
+[![AppVeyor](https://img.shields.io/appveyor/ci/Turnerj/devto-dotnet/master.svg)](https://ci.appveyor.com/project/Turnerj/devto-dotnet)
+[![Codecov](https://img.shields.io/codecov/c/github/turnerj/devto-dotnet/master.svg)](https://codecov.io/gh/turnerj/devto-dotnet)
+[![NuGet](https://img.shields.io/nuget/v/DevTo.Api.svg)](https://www.nuget.org/packages/DevTo.Api)
 
-Currently supports:
-- Retrieve recent articles (optionally by tag)
-- Retrieve full article (by id)
-- Retrieve tags
+## Supports
+- Recent articles (inc. pagination)
+- Recent articles by tag (inc. pagination)
+- Get Article (including article body)
+- Get Tags (inc. pagination)
 
 ## Getting Started
 
-You can use the `AddDevToApi` service collection extension if you are using dependency injection.
+### With DI
 
 ```csharp
+using Microsoft.Extensions.DependencyInjection;
+
 services.AddDevToApi(new Uri("https://dev.to/"));
 ```
 
-In your class constructor, reference the `IArticleApi` or `ITagsApi`.
+```csharp
+using DevTo.Api;
 
-Without dependency injection, you need to reference `ArticleService` and `TagService`.
+public class MyClass
+{
+	public MyClass(IArticleApi articleApi, ITagsApi tagsApi)
+	{
+		
+	}
+}
+```
+
+### Without DI
+
+```csharp
+using DevTo.Api;
+using System.Net.Http;
+
+var articleService = new ArticleService(new Uri("https://dev.to/"), new HttpClient());
+var tagService = new TagService(new Uri("https://dev.to/"), new HttpClient());
+```
