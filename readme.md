@@ -26,9 +26,20 @@ using DevTo.Api;
 
 public class MyClass
 {
+	private IArticleApi ArticleApi { get; }
+	private ITagsApi TagsApi { get; }
+
 	public MyClass(IArticleApi articleApi, ITagsApi tagsApi)
 	{
+		ArticleApi = articleApi;
+		TagsApi = tagsApi;
+	}
+
+	public async Task DoWork()
+	{
+		var articles = await ArticlesApi.GetRecentArticlesAsync();
 		
+		// Your code here...
 	}
 }
 ```
@@ -41,4 +52,6 @@ using System.Net.Http;
 
 var articleService = new ArticleService(new Uri("https://dev.to/"), new HttpClient());
 var tagService = new TagService(new Uri("https://dev.to/"), new HttpClient());
+
+var articles = await articleService.GetRecentArticlesAsync();
 ```
