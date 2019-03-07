@@ -6,10 +6,11 @@
 
     <PackageId>$(AssemblyName)</PackageId>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://github.com/Turnerj/devto-dotnet/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Turnerj/devto-dotnet</PackageProjectUrl>
     <PackageBaseTags>dev.to,devto</PackageBaseTags>
     
-    <RepositoryUrl>https://github.com/TurnerSoftware/devto-dotnet.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Turnerj/devto-dotnet.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryBranch>master</RepositoryBranch>
 
