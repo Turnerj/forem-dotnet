@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevTo.Api", "src\DevTo.Api\DevTo.Api.csproj", "{A866960B-5F87-4DAA-A6C6-9CC9E7821A72}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4D07A422-5B40-4533-B363-E84898CB5206}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.build.props = src\Directory.build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F8F27498-81DF-4DB4-8B64-A311BFD7C8C4}"
 EndProject
