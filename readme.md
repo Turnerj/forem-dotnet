@@ -6,10 +6,13 @@ A basic read-only interface to [dev.to](https://dev.to/)
 [![NuGet](https://img.shields.io/nuget/v/DevTo.Api.svg)](https://www.nuget.org/packages/DevTo.Api)
 
 ## Supports
-- Recent articles (inc. pagination)
-- Recent articles by tag (inc. pagination)
-- Get Article (including article body)
-- Get Tags (inc. pagination)
+- Get articles
+- Get articles by tag
+- Get articles by user
+- Get article (including article body)
+- Get tags
+
+Where available, supports basic pagination to request additional data.
 
 ## Getting Started
 
@@ -26,18 +29,18 @@ using DevTo.Api;
 
 public class MyClass
 {
-	private IArticleApi ArticleApi { get; }
+	private IArticleApi ArticlesApi { get; }
 	private ITagsApi TagsApi { get; }
 
-	public MyClass(IArticleApi articleApi, ITagsApi tagsApi)
+	public MyClass(IArticlesApi articlesApi, ITagsApi tagsApi)
 	{
-		ArticleApi = articleApi;
+		ArticlesApi = articlesApi;
 		TagsApi = tagsApi;
 	}
 
 	public async Task DoWork()
 	{
-		var articles = await ArticlesApi.GetRecentArticlesAsync();
+		var articles = await ArticlesApi.GetArticlesAsync();
 		
 		// Your code here...
 	}
@@ -50,8 +53,8 @@ public class MyClass
 using DevTo.Api;
 using System.Net.Http;
 
-var articleService = new ArticleService(new Uri("https://dev.to/"), new HttpClient());
-var tagService = new TagService(new Uri("https://dev.to/"), new HttpClient());
+var articlesService = new ArticlesService(new Uri("https://dev.to/"), new HttpClient());
+var tagsService = new TagsService(new Uri("https://dev.to/"), new HttpClient());
 
-var articles = await articleService.GetRecentArticlesAsync();
+var articles = await articlesService.GetArticlesAsync();
 ```
