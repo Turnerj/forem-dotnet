@@ -8,9 +8,9 @@ namespace DevTo.Api
 {
 	public interface IArticleApi
 	{
-		Task<IEnumerable<ArticleListing>> GetRecentArticlesAsync(int page = 1);
-		Task<IEnumerable<ArticleListing>> GetRecentArticlesForTagAsync(string tagName, int page = 1);
-		Task<IEnumerable<ArticleListing>> GetArticlesForUserAsync(string username, int page = 1);
+		Task<IEnumerable<ArticleListing>> GetArticlesAsync(int page = 1);
+		Task<IEnumerable<ArticleListing>> GetArticlesByTagAsync(string tag, int page = 1);
+		Task<IEnumerable<ArticleListing>> GetArticlesByUserAsync(string username, int page = 1);
 		Task<Article> GetArticleAsync(int id);
 	}
 }

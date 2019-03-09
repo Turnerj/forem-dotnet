@@ -6,9 +6,9 @@ using DevTo.Api.Models;
 
 namespace DevTo.Api
 {
-	public class TagService : ApiService, ITagsApi
+	public class TagsService : ApiService, ITagsApi
 	{
-		public TagService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
+		public TagsService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 
 		public async Task<IEnumerable<Tag>> GetTagsAsync(int page = 1)
 		{

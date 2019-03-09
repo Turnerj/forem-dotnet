@@ -7,12 +7,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace DevTo.Api.Tests
 {
 	[TestClass]
-	public class TagTests : TestBase
+	public class TagsApiTests : TestBase
 	{
 		[TestMethod]
 		public async Task GetTags()
 		{
-			var tagService = new TagService(BaseUri, HttpClient);
+			var tagService = new TagsService(BaseUri, HttpClient);
 			var tags = await tagService.GetTagsAsync();
 			Assert.IsNotNull(tags);
 		}
