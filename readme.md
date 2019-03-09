@@ -29,7 +29,7 @@ using DevTo.Api;
 
 public class MyClass
 {
-	private IArticleApi ArticlesApi { get; }
+	private IArticlesApi ArticlesApi { get; }
 	private ITagsApi TagsApi { get; }
 
 	public MyClass(IArticlesApi articlesApi, ITagsApi tagsApi)
