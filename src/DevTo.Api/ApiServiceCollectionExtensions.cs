@@ -10,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
 	{
 		public static void AddDevToApi(this IServiceCollection services, Uri baseUri)
 		{
-			services.AddTransient<IArticleApi, ArticlesService>(sp =>
+			services.AddTransient<IArticlesApi, ArticlesService>(sp =>
 				new ArticlesService(baseUri, sp.GetService<HttpClient>())
 			);
 

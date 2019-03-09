@@ -6,7 +6,7 @@ using DevTo.Api.Models;
 
 namespace DevTo.Api
 {
-	public class ArticlesService : ApiService, IArticleApi
+	public class ArticlesService : ApiService, IArticlesApi
 	{
 		public ArticlesService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 

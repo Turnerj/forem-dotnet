@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevTo.Api
 {
-	public interface IArticleApi
+	public interface IArticlesApi
 	{
 		Task<IEnumerable<ArticleListing>> GetArticlesAsync(int page = 1);
 		Task<IEnumerable<ArticleListing>> GetArticlesByTagAsync(string tag, int page = 1);
