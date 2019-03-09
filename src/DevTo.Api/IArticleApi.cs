@@ -10,6 +10,7 @@ namespace DevTo.Api
 	{
 		Task<IEnumerable<ArticleListing>> GetRecentArticlesAsync(int page = 1);
 		Task<IEnumerable<ArticleListing>> GetRecentArticlesForTagAsync(string tagName, int page = 1);
+		Task<IEnumerable<ArticleListing>> GetArticlesForUserAsync(string username, int page = 1);
 		Task<Article> GetArticleAsync(int id);
 	}
 }

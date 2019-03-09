@@ -44,5 +44,13 @@ namespace DevTo.Api.Tests
 			var article = await articleService.GetArticleAsync(5);
 			Assert.IsNotNull(article);
 		}
+
+		[TestMethod]
+		public async Task GetArticlesByUser()
+		{
+			var articleService = new ArticleService(BaseUri, HttpClient);
+			var articles = await articleService.GetArticlesForUserAsync("ben");
+			Assert.IsTrue(articles.Any());
+		}
 	}
 }

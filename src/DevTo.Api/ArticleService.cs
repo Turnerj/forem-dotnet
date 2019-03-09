@@ -31,5 +31,14 @@ namespace DevTo.Api
 				page
 			});
 		}
+
+		public async Task<IEnumerable<ArticleListing>> GetArticlesForUserAsync(string username, int page = 1)
+		{
+			return await GetAsync<IEnumerable<ArticleListing>>("/api/articles", new
+			{
+				username,
+				page
+			});
+		}
 	}
 }
