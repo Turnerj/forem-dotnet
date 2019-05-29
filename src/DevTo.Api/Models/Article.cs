@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DevTo.Api.Serialization;
 using Newtonsoft.Json;
 
 namespace DevTo.Api.Models
@@ -21,7 +20,6 @@ namespace DevTo.Api.Models
 		[JsonProperty("published_at")]
 		public DateTime PublishedAt { get; set; }
 		[JsonProperty("tag_list")]
-		[JsonConverter(typeof(StringTagConverter))]
 		public IEnumerable<string> TagList { get; set; }
 
 		[JsonProperty("slug")]
