@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,29 @@ namespace DevTo.Api
 			using (var response = await HttpClient.GetAsync(uri))
 			{
 				var responseJson = await response.Content.ReadAsStringAsync();
+				return JsonConvert.DeserializeObject<TResponse>(responseJson);
+			}
+		}
+
+		protected async Task<TResponse> PutAsync<TResponse>(string path, object body, string apiKey)
+		{
+			var uri = BuildRequestUri(path, null);
+			var message = new HttpRequestMessage(HttpMethod.Put, uri);
+			message.Headers.Add("api-key", apiKey);
+			message.Content = new StringContent(JsonConvert.SerializeObject(body));
+
+			using (var response = await HttpClient.SendAsync(message))
+			{
+				var responseJson = await response.Content.ReadAsStringAsync();
+
+				var rawConversion = JsonConvert.DeserializeObject(responseJson) as JObject;
+				if (rawConversion.ContainsKey("error"))
+				{
+					var error = rawConversion["error"].ToString();
+					var statusCode = (int)rawConversion["status"];
+					throw new ApiException(statusCode, error);
+				}
+
 				return JsonConvert.DeserializeObject<TResponse>(responseJson);
 			}
 		}

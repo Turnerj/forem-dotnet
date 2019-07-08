@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using DevTo.Api.Internal;
 using DevTo.Api.Models;
 
 namespace DevTo.Api
@@ -9,6 +10,28 @@ namespace DevTo.Api
 	public class ArticlesService : ApiService, IArticlesApi
 	{
 		public ArticlesService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
+
+		public async Task<Article> CreateArticle(string apiKey, string markdown)
+		{
+			return await PutAsync<Article>("/api/articles", new ArticleUpdate
+			{
+				Article = new ArticleUpdate.ArticlePayload
+				{
+					Markdown = markdown
+				}
+			}, apiKey);
+		}
+
+		public async Task<Article> UpdateArticle(string apiKey, int id, string markdown)
+		{
+			return await PutAsync<Article>($"/api/articles/{id}", new ArticleUpdate
+			{
+				Article = new ArticleUpdate.ArticlePayload
+				{
+					Markdown = markdown
+				}
+			}, apiKey);
+		}
 
 		public async Task<Article> GetArticleAsync(int id)
 		{
