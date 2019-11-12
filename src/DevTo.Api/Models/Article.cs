@@ -18,8 +18,12 @@ namespace DevTo.Api.Models
 		public Uri CoverImage { get; set; }
 		[JsonProperty("social_image")]
 		public Uri SocialImage { get; set; }
+		[JsonProperty("created_at")]
+		public DateTime CreatedAt { get; set; }
 		[JsonProperty("published_at")]
 		public DateTime PublishedAt { get; set; }
+		[JsonProperty("edited_at")]
+		public DateTime EditedAt { get; set; }
 		[JsonProperty("tag_list")]
 		[JsonConverter(typeof(StringTagConverter))]
 		public IEnumerable<string> TagList { get; set; }
@@ -29,6 +33,8 @@ namespace DevTo.Api.Models
 		[JsonProperty("path")]
 		public string Path { get; set; }
 		[JsonProperty("canonical_url")]
+		public Uri CanonicalUrl { get; set; }
+		[JsonProperty("article_url")]
 		public Uri ArticleUrl { get; set; }
 
 		[JsonProperty("comments_count")]
@@ -41,5 +47,7 @@ namespace DevTo.Api.Models
 
 		[JsonProperty("user")]
 		public ArticleAuthor User { get; set; }
+		[JsonProperty("organization")]
+		public ArticleOrganisation Organization { get; set; }
 	}
 }
