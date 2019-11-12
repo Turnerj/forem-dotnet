@@ -2,9 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>DevTo.Api</RootNamespace>
-    <AssemblyName>DevTo.Api</AssemblyName>
-    <Description>Basic read-only interface to the developer blogging platform "dev.to"</Description>
+    <Title>DEV API Library</Title>
+    <Description>API interface to the blogging platform "dev.to" in .NET</Description>
     <PackageTags>$(PackageBaseTags)</PackageTags>
     <Authors>James Turner</Authors>
   </PropertyGroup>
