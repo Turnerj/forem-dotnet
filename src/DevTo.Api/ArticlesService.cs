@@ -11,7 +11,7 @@ namespace DevTo.Api
 	{
 		public ArticlesService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 
-		public async Task<Article> CreateArticle(string apiKey, string markdown)
+		public async Task<Article> CreateArticleAsync(string apiKey, string markdown)
 		{
 			return await PutAsync<Article>("/api/articles", new ArticleUpdate
 			{
@@ -22,7 +22,7 @@ namespace DevTo.Api
 			}, apiKey);
 		}
 
-		public async Task<Article> UpdateArticle(string apiKey, int id, string markdown)
+		public async Task<Article> UpdateArticleAsync(string apiKey, int id, string markdown)
 		{
 			return await PutAsync<Article>($"/api/articles/{id}", new ArticleUpdate
 			{
