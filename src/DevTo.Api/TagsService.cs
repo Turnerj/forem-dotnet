@@ -10,9 +10,9 @@ namespace DevTo.Api
 	{
 		public TagsService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 
-		public async Task<IEnumerable<Tag>> GetTagsAsync(int page = 1)
+		public Task<IEnumerable<Tag>> GetTagsAsync(int page = 1)
 		{
-			return await GetAsync<IEnumerable<Tag>>("/api/tags", new
+			return GetAsync<IEnumerable<Tag>>("/api/tags", new
 			{
 				page
 			});

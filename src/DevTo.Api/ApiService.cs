@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +14,76 @@ namespace DevTo.Api
 		protected Uri BaseUri { get; }
 		protected HttpClient HttpClient { get; }
 
-		public ApiService(Uri baseUri, HttpClient httpClient)
+		protected ApiService(Uri baseUri, HttpClient httpClient)
 		{
 			BaseUri = baseUri;
 			HttpClient = httpClient;
 		}
 
-		protected async Task<TResponse> GetAsync<TResponse>(string path, object parameters = null)
+		protected async Task<TResponse> GetAsync<TResponse>(string path, object parameters = null, string apiKey = null)
 		{
 			var uri = BuildRequestUri(path, parameters);
-			using (var response = await HttpClient.GetAsync(uri))
+			var message = new HttpRequestMessage(HttpMethod.Get, uri);
+
+			if (apiKey != default)
+			{
+				message.Headers.Add("api-key", apiKey);
+			}
+
+			using (var response = await HttpClient.SendAsync(message))
 			{
 				var responseJson = await response.Content.ReadAsStringAsync();
-				return JsonConvert.DeserializeObject<TResponse>(responseJson);
+
+				if (response.IsSuccessStatusCode)
+				{
+					return JsonConvert.DeserializeObject<TResponse>(responseJson);
+				}
+				else
+				{
+					try
+					{
+						var rawConversion = JsonConvert.DeserializeObject(responseJson) as JObject;
+						var error = rawConversion["error"].ToString();
+						var statusCode = (int)rawConversion["status"];
+						throw new ApiException(statusCode, error);
+					}
+					catch
+					{
+						throw new ApiException(response.StatusCode);
+					}
+				}
+			}
+		}
+
+		protected async Task<TResponse> PutAsync<TResponse>(string path, object body, string apiKey)
+		{
+			var uri = BuildRequestUri(path, null);
+			var message = new HttpRequestMessage(HttpMethod.Put, uri);
+			message.Headers.Add("api-key", apiKey);
+			message.Content = new StringContent(JsonConvert.SerializeObject(body));
+
+			using (var response = await HttpClient.SendAsync(message))
+			{
+				var responseJson = await response.Content.ReadAsStringAsync();
+
+				if (response.IsSuccessStatusCode)
+				{
+					return JsonConvert.DeserializeObject<TResponse>(responseJson);
+				}
+				else
+				{
+					try
+					{
+						var rawConversion = JsonConvert.DeserializeObject(responseJson) as JObject;
+						var error = rawConversion["error"].ToString();
+						var statusCode = (int)rawConversion["status"];
+						throw new ApiException(statusCode, error);
+					}
+					catch
+					{
+						throw new ApiException(response.StatusCode);
+					}
+				}
 			}
 		}
 

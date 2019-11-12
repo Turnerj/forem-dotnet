@@ -9,6 +9,27 @@ namespace DevTo.Api.Tests
 	[TestClass]
 	public class ArticlesApiTests : TestBase
 	{
+		[TestMethod, ExpectedException(typeof(ApiException))]
+		public async Task CreateArticle_WithInvalidApiKeyThrowsException()
+		{
+			var articleService = new ArticlesService(BaseUri, HttpClient);
+			await articleService.CreateArticleAsync("NotARealApiKey", "Hello World");
+		}
+
+		[TestMethod, ExpectedException(typeof(ApiException))]
+		public async Task UpdateArticle_WithInvalidApiKeyThrowsException()
+		{
+			var articleService = new ArticlesService(BaseUri, HttpClient);
+			await articleService.UpdateArticleAsync("NotARealApiKey", 5, "Hello World");
+		}
+
+		[TestMethod, ExpectedException(typeof(ApiException))]
+		public async Task GetUserArticles_WithInvalidApiKeyThrowsException()
+		{
+			var articleService = new ArticlesService(BaseUri, HttpClient);
+			await articleService.GetUserArticlesAsync("NotARealApiKey");
+		}
+
 		[TestMethod]
 		public async Task GetArticles()
 		{

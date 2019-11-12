@@ -1,0 +1,4 @@
+{
+  "TestProject": "tests/DevTo.Api.Tests/DevTo.Api.Tests.csproj",
+  "TestCoverageFilter": "+[DevTo.*]* -[DevTo.Api.Tests]*"
+}
