@@ -14,7 +14,7 @@ namespace DevTo.Api
 		protected Uri BaseUri { get; }
 		protected HttpClient HttpClient { get; }
 
-		public ApiService(Uri baseUri, HttpClient httpClient)
+		protected ApiService(Uri baseUri, HttpClient httpClient)
 		{
 			BaseUri = baseUri;
 			HttpClient = httpClient;
