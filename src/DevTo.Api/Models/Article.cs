@@ -23,9 +23,9 @@ namespace DevTo.Api.Models
 		[JsonProperty("published_at")]
 		public DateTime PublishedAt { get; set; }
 		[JsonProperty("edited_at")]
-		public DateTime EditedAt { get; set; }
+		public DateTime? EditedAt { get; set; }
 		[JsonProperty("tag_list")]
-		[JsonConverter(typeof(StringTagConverter))]
+		[JsonConverter(typeof(MultiTypeTagConverter))]
 		public IEnumerable<string> TagList { get; set; }
 
 		[JsonProperty("slug")]
