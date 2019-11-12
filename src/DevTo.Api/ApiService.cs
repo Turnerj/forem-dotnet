@@ -32,8 +32,15 @@ namespace DevTo.Api
 
 			using (var response = await HttpClient.SendAsync(message))
 			{
-				var responseJson = await response.Content.ReadAsStringAsync();
-				return JsonConvert.DeserializeObject<TResponse>(responseJson);
+				if (response.IsSuccessStatusCode)
+				{
+					var responseJson = await response.Content.ReadAsStringAsync();
+					return JsonConvert.DeserializeObject<TResponse>(responseJson);
+				}
+				else
+				{
+					throw new ApiException(response.StatusCode);
+				}
 			}
 		}
 
@@ -48,15 +55,24 @@ namespace DevTo.Api
 			{
 				var responseJson = await response.Content.ReadAsStringAsync();
 
-				var rawConversion = JsonConvert.DeserializeObject(responseJson) as JObject;
-				if (rawConversion.ContainsKey("error"))
+				if (response.IsSuccessStatusCode)
 				{
-					var error = rawConversion["error"].ToString();
-					var statusCode = (int)rawConversion["status"];
-					throw new ApiException(statusCode, error);
+					return JsonConvert.DeserializeObject<TResponse>(responseJson);
 				}
-
-				return JsonConvert.DeserializeObject<TResponse>(responseJson);
+				else
+				{
+					try
+					{
+						var rawConversion = JsonConvert.DeserializeObject(responseJson) as JObject;
+						var error = rawConversion["error"].ToString();
+						var statusCode = (int)rawConversion["status"];
+						throw new ApiException(statusCode, error);
+					}
+					catch
+					{
+						throw new ApiException(response.StatusCode);
+					}
+				}
 			}
 		}
 
