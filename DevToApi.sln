@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4D07A422-5B4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F8F27498-81DF-4DB4-8B64-A311BFD7C8C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevTo.Api.Tests", "test\DevTo.Api.Tests\DevTo.Api.Tests.csproj", "{897862D0-BBCC-4F74-A14D-0DD0B7C0D8AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevTo.Api.Tests", "tests\DevTo.Api.Tests\DevTo.Api.Tests.csproj", "{897862D0-BBCC-4F74-A14D-0DD0B7C0D8AA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{535D1AD4-DC61-45CC-845A-304DDBBD58A3}"
 	ProjectSection(SolutionItems) = preProject
