@@ -20,10 +20,17 @@ namespace DevTo.Api
 			HttpClient = httpClient;
 		}
 
-		protected async Task<TResponse> GetAsync<TResponse>(string path, object parameters = null)
+		protected async Task<TResponse> GetAsync<TResponse>(string path, object parameters = null, string apiKey = null)
 		{
 			var uri = BuildRequestUri(path, parameters);
-			using (var response = await HttpClient.GetAsync(uri))
+			var message = new HttpRequestMessage(HttpMethod.Get, uri);
+
+			if (apiKey != default)
+			{
+				message.Headers.Add("api-key", apiKey);
+			}
+
+			using (var response = await HttpClient.SendAsync(message))
 			{
 				var responseJson = await response.Content.ReadAsStringAsync();
 				return JsonConvert.DeserializeObject<TResponse>(responseJson);
