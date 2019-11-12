@@ -32,14 +32,25 @@ namespace DevTo.Api
 
 			using (var response = await HttpClient.SendAsync(message))
 			{
+				var responseJson = await response.Content.ReadAsStringAsync();
+
 				if (response.IsSuccessStatusCode)
 				{
-					var responseJson = await response.Content.ReadAsStringAsync();
 					return JsonConvert.DeserializeObject<TResponse>(responseJson);
 				}
 				else
 				{
-					throw new ApiException(response.StatusCode);
+					try
+					{
+						var rawConversion = JsonConvert.DeserializeObject(responseJson) as JObject;
+						var error = rawConversion["error"].ToString();
+						var statusCode = (int)rawConversion["status"];
+						throw new ApiException(statusCode, error);
+					}
+					catch
+					{
+						throw new ApiException(response.StatusCode);
+					}
 				}
 			}
 		}
