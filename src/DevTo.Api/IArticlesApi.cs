@@ -8,11 +8,13 @@ namespace DevTo.Api
 {
 	public interface IArticlesApi
 	{
-		Task<Article> CreateArticleAsync(string apiKey, string markdown);
-		Task<Article> UpdateArticleAsync(string apiKey, int id, string markdown);
-		Task<IEnumerable<ArticleListing>> GetArticlesAsync(int page = 1);
-		Task<IEnumerable<ArticleListing>> GetArticlesByTagAsync(string tag, int page = 1);
-		Task<IEnumerable<ArticleListing>> GetArticlesByUserAsync(string username, int page = 1);
+		Task<UserArticle> CreateArticleAsync(string apiKey, string markdown);
+		Task<UserArticle> UpdateArticleAsync(string apiKey, int id, string markdown);
+		Task<IEnumerable<UserArticle>> GetUserArticlesAsync(string apiKey, int page = 1);
+
+		Task<IEnumerable<Article>> GetArticlesAsync(int page = 1);
+		Task<IEnumerable<Article>> GetArticlesByTagAsync(string tag, int page = 1);
+		Task<IEnumerable<Article>> GetArticlesByUserAsync(string username, int page = 1);
 		Task<Article> GetArticleAsync(int id);
 	}
 }

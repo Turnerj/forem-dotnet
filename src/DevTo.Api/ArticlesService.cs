@@ -11,9 +11,9 @@ namespace DevTo.Api
 	{
 		public ArticlesService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 
-		public async Task<Article> CreateArticleAsync(string apiKey, string markdown)
+		public Task<UserArticle> CreateArticleAsync(string apiKey, string markdown)
 		{
-			return await PutAsync<Article>("/api/articles", new ArticleUpdate
+			return PutAsync<UserArticle>("/api/articles", new ArticleUpdate
 			{
 				Article = new ArticleUpdate.ArticlePayload
 				{
@@ -22,9 +22,9 @@ namespace DevTo.Api
 			}, apiKey);
 		}
 
-		public async Task<Article> UpdateArticleAsync(string apiKey, int id, string markdown)
+		public Task<UserArticle> UpdateArticleAsync(string apiKey, int id, string markdown)
 		{
-			return await PutAsync<Article>($"/api/articles/{id}", new ArticleUpdate
+			return PutAsync<UserArticle>($"/api/articles/{id}", new ArticleUpdate
 			{
 				Article = new ArticleUpdate.ArticlePayload
 				{
@@ -33,31 +33,39 @@ namespace DevTo.Api
 			}, apiKey);
 		}
 
-		public async Task<Article> GetArticleAsync(int id)
+		public Task<IEnumerable<UserArticle>> GetUserArticlesAsync(string apiKey, int page = 1)
 		{
-			return await GetAsync<Article>($"/api/articles/{id}");
+			return GetAsync<IEnumerable<UserArticle>>($"/api/me/all", new
+			{
+				page
+			}, apiKey);
 		}
 
-		public async Task<IEnumerable<ArticleListing>> GetArticlesAsync(int page = 1)
+		public Task<Article> GetArticleAsync(int id)
 		{
-			return await GetAsync<IEnumerable<ArticleListing>>("/api/articles", new
+			return GetAsync<Article>($"/api/articles/{id}");
+		}
+
+		public Task<IEnumerable<Article>> GetArticlesAsync(int page = 1)
+		{
+			return GetAsync<IEnumerable<Article>>("/api/articles", new
 			{
 				page
 			});
 		}
 
-		public async Task<IEnumerable<ArticleListing>> GetArticlesByTagAsync(string tag, int page = 1)
+		public Task<IEnumerable<Article>> GetArticlesByTagAsync(string tag, int page = 1)
 		{
-			return await GetAsync<IEnumerable<ArticleListing>>("/api/articles", new
+			return GetAsync<IEnumerable<Article>>("/api/articles", new
 			{
 				tag,
 				page
 			});
 		}
 
-		public async Task<IEnumerable<ArticleListing>> GetArticlesByUserAsync(string username, int page = 1)
+		public Task<IEnumerable<Article>> GetArticlesByUserAsync(string username, int page = 1)
 		{
-			return await GetAsync<IEnumerable<ArticleListing>>("/api/articles", new
+			return GetAsync<IEnumerable<Article>>("/api/articles", new
 			{
 				username,
 				page
