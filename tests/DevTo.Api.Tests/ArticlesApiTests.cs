@@ -55,7 +55,7 @@ namespace DevTo.Api.Tests
 			var articleService = new ArticlesService(BaseUri, HttpClient);
 			var articles = await articleService.GetArticlesByTagAsync("react");
 			Assert.IsNotNull(articles);
-			Assert.IsTrue(articles.All(a => a.TagList.Contains("react")));
+			Assert.IsTrue(articles.All(a => a.TagList.Contains("react", StringComparer.OrdinalIgnoreCase)));
 		}
 
 		[TestMethod]
