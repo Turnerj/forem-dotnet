@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netcoreapp2.2;netcoreapp3.0</TargetFrameworks>
     <Title>DEV API Library</Title>
     <Description>API interface to the blogging platform "dev.to" in .NET</Description>
     <PackageTags>$(PackageBaseTags)</PackageTags>
