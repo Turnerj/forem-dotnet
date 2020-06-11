@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace DevTo.Api.Internal
+namespace Forem.Api.Internal
 {
 	internal class ArticleUpdate
 	{

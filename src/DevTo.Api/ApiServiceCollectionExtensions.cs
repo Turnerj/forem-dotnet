@@ -1,4 +1,4 @@
-﻿using DevTo.Api;
+﻿using Forem.Api;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -8,7 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
 	public static class ApiServiceCollectionExtensions
 	{
-		public static void AddDevToApi(this IServiceCollection services, Uri baseUri)
+		public static void AddForemApi(this IServiceCollection services, Uri baseUri)
 		{
 			services.AddTransient<IArticlesApi, ArticlesService>(sp =>
 				new ArticlesService(baseUri, sp.GetService<HttpClient>())

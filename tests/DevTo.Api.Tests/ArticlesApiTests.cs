@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace DevTo.Api.Tests
+namespace Forem.Api.Tests
 {
 	[TestClass]
 	public class ArticlesApiTests : TestBase

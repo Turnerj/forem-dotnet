@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using DevTo.Api.Internal;
-using DevTo.Api.Models;
+using Forem.Api.Internal;
+using Forem.Api.Models;
 
-namespace DevTo.Api
+namespace Forem.Api
 {
 	public class ArticlesService : ApiService, IArticlesApi
 	{

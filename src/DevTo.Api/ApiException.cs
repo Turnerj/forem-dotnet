@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 
-namespace DevTo.Api
+namespace Forem.Api
 {
 	public class ApiException : Exception
 	{
