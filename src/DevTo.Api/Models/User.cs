@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace DevTo.Api.Models
+namespace Forem.Api.Models
 {
 	public class User
 	{

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace DevTo.Api.Serialization
+namespace Forem.Api.Serialization
 {
 	public class MultiTypeTagConverter : JsonConverter
 	{

@@ -1,5 +1,5 @@
-# Dev.to API for .NET
-API interface for the blogging platform [dev.to (DEV)](https://dev.to/)
+# Forem API for .NET
+API interface for the blogging platform formerly [dev.to (DEV)](https://dev.to/) now [Forem](https://dev.to/devteam/for-empowering-community-2k6h) 
 
 [![AppVeyor](https://img.shields.io/appveyor/ci/Turnerj/devto-dotnet/master.svg)](https://ci.appveyor.com/project/Turnerj/devto-dotnet)
 [![Codecov](https://img.shields.io/codecov/c/github/turnerj/devto-dotnet/master.svg)](https://codecov.io/gh/turnerj/devto-dotnet)
@@ -24,11 +24,11 @@ Where available, supports basic pagination to request additional data.
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
 
-services.AddDevToApi(new Uri("https://dev.to/"));
+services.AddForemApi(new Uri("https://dev.to/"));
 ```
 
 ```csharp
-using DevTo.Api;
+using Forem.Api;
 
 public class MyClass
 {
@@ -53,7 +53,7 @@ public class MyClass
 ### Without DI
 
 ```csharp
-using DevTo.Api;
+using Forem.Api;
 using System.Net.Http;
 
 var articlesService = new ArticlesService(new Uri("https://dev.to/"), new HttpClient());

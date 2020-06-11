@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace DevTo.Api
+namespace Forem.Api
 {
 	public abstract class ApiService
 	{

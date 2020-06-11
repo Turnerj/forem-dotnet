@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DevTo.Api.Tests
+namespace Forem.Api.Tests
 {
 	[TestClass]
 	public class TagsApiTests : TestBase
