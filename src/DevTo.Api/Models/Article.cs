@@ -46,7 +46,7 @@ namespace DevTo.Api.Models
 		public string BodyHtml { get; set; }
 
 		[JsonProperty("user")]
-		public ArticleAuthor User { get; set; }
+		public User User { get; set; }
 		[JsonProperty("organization")]
 		public ArticleOrganisation Organization { get; set; }
 	}
