@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace DevTo.Api.Models
+namespace Forem.Api.Models
 {
 	public class Comment
 	{

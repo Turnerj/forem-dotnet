@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DevTo.Api.Tests
+namespace Forem.Api.Tests
 {
 	[TestClass]
 	public class CommentsApiTests : TestBase
