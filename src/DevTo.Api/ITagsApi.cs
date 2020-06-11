@@ -1,10 +1,10 @@
-﻿using DevTo.Api.Models;
+﻿using Forem.Api.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevTo.Api
+namespace Forem.Api
 {
 	public interface ITagsApi
 	{

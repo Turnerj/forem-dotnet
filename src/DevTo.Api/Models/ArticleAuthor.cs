@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DevTo.Api.Models
+namespace Forem.Api.Models
 {
 	public class ArticleAuthor
 	{

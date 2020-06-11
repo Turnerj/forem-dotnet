@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 
-namespace DevTo.Api.Tests
+namespace Forem.Api.Tests
 {
 	public class TestBase
 	{

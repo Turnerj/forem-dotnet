@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using DevTo.Api.Serialization;
+using Forem.Api.Serialization;
 using Newtonsoft.Json;
 
-namespace DevTo.Api.Models
+namespace Forem.Api.Models
 {
 	public class Article
 	{

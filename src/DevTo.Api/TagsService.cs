@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using DevTo.Api.Models;
+using Forem.Api.Models;
 
-namespace DevTo.Api
+namespace Forem.Api
 {
 	public class TagsService : ApiService, ITagsApi
 	{
