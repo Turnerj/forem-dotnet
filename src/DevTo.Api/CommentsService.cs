@@ -11,16 +11,11 @@ namespace Forem.Api
 		public CommentsService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 
 		public Task<IEnumerable<Comment>> GetCommentsByArticleAsync(int articleId)
-		{
-			return GetAsync<IEnumerable<Comment>>("/api/comments", new Dictionary<string, object>
-			{
-			  { "a_id", articleId },
-			});
-		}
+			=> GetAsync<IEnumerable<Comment>>("/api/comments", new Dictionary<string, object>
+				{
+				  { "a_id", articleId },
+				});
 
-		public Task<Comment> GetCommentAsync(string id)
-		{
-			return GetAsync<Comment>($"/api/comments/{id}");
-		}
+		public Task<Comment> GetCommentAsync(string id) => GetAsync<Comment>($"/api/comments/{id}");
 	}
 }

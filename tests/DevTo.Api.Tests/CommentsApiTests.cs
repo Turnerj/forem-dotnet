@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Forem.Api.Tests
@@ -11,7 +12,7 @@ namespace Forem.Api.Tests
 		{
 			var commentsService = new CommentsService(BaseUri, HttpClient);
 			var comments = await commentsService.GetCommentsByArticleAsync(5);
-			Assert.IsNotNull(comments);
+			Assert.IsTrue(comments.Any());
 		}
 
 		[TestMethod]
