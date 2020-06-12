@@ -13,5 +13,13 @@ namespace Forem.Api.Tests
 			var podcastEpisodes = await podcastEpisodesService.GetPodcastEpisodesAsync();
 			Assert.IsNotNull(podcastEpisodes);
 		}
+
+		[TestMethod]
+		public async Task GetPodcastEpisodesByUser()
+		{
+			var podcastEpisodesService = new PodcastEpisodesService(BaseUri, HttpClient);
+			var podcastEpisodes = await podcastEpisodesService.GetPodcastEpisodesAsync("devdiscuss");
+			Assert.IsNotNull(podcastEpisodes);
+		}
 	}
 }
