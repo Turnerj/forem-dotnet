@@ -39,17 +39,21 @@ namespace Forem.Api
 				}
 				else
 				{
+					string error;
+					int statusCode;
+
 					try
 					{
 						var rawConversion = JsonConvert.DeserializeObject(responseJson) as JObject;
-						var error = rawConversion["error"].ToString();
-						var statusCode = (int)rawConversion["status"];
-						throw new ApiException(statusCode, error);
+						error = rawConversion["error"].ToString();
+						statusCode = (int)rawConversion["status"];
 					}
 					catch
 					{
 						throw new ApiException(response.StatusCode);
 					}
+
+					throw new ApiException(statusCode, error);
 				}
 			}
 		}
@@ -71,17 +75,21 @@ namespace Forem.Api
 				}
 				else
 				{
+					string error;
+					int statusCode;
+
 					try
 					{
 						var rawConversion = JsonConvert.DeserializeObject(responseJson) as JObject;
-						var error = rawConversion["error"].ToString();
-						var statusCode = (int)rawConversion["status"];
-						throw new ApiException(statusCode, error);
+						error = rawConversion["error"].ToString();
+						statusCode = (int)rawConversion["status"];
 					}
 					catch
 					{
 						throw new ApiException(response.StatusCode);
 					}
+
+					throw new ApiException(statusCode, error);
 				}
 			}
 		}
