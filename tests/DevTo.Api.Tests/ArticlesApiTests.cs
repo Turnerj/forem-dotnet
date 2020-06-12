@@ -35,18 +35,18 @@ namespace Forem.Api.Tests
 		{
 			var articleService = new ArticlesService(BaseUri, HttpClient);
 			var articles = await articleService.GetArticlesAsync();
-			Assert.IsNotNull(articles);
+			Assert.IsTrue(articles.Any());
 		}
 		
 		[TestMethod]
 		public async Task GetArticlesWithPagination()
 		{
 			var articleService = new ArticlesService(BaseUri, HttpClient);
-			var firstPageOfArticles = (await articleService.GetArticlesAsync(1)).ToArray();
-			var secondPageOfArticles = (await articleService.GetArticlesAsync(2)).ToArray();
-			Assert.IsNotNull(firstPageOfArticles);
-			Assert.IsNotNull(secondPageOfArticles);
-			Assert.AreNotEqual(firstPageOfArticles[0].ArticleId, secondPageOfArticles[0].ArticleId);
+			var firstPageOfArticles = await articleService.GetArticlesAsync(1);
+			var secondPageOfArticles = await articleService.GetArticlesAsync(2);
+			Assert.IsTrue(firstPageOfArticles.Any());
+			Assert.IsTrue(secondPageOfArticles.Any());
+			Assert.AreNotEqual(firstPageOfArticles.First().ArticleId, secondPageOfArticles.First().ArticleId);
 		}
 
 		[TestMethod]
