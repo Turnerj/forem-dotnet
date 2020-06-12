@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Forem.Api.Tests
@@ -20,6 +21,17 @@ namespace Forem.Api.Tests
 			var podcastEpisodesService = new PodcastEpisodesService(BaseUri, HttpClient);
 			var podcastEpisodes = await podcastEpisodesService.GetPodcastEpisodesAsync("devdiscuss");
 			Assert.IsNotNull(podcastEpisodes);
+		}
+
+		[TestMethod]
+		public async Task GetPodcastEpisodesWithPagination()
+		{
+			var podcastEpisodesService = new PodcastEpisodesService(BaseUri, HttpClient);
+			var firstPageOfPodcastEpisodes = await podcastEpisodesService.GetPodcastEpisodesAsync("devdiscuss", 1, 2);
+			var secondPageOfPodcastEpisodes = await podcastEpisodesService.GetPodcastEpisodesAsync("devdiscuss", 2, 2);
+			Assert.IsNotNull(firstPageOfPodcastEpisodes);
+			Assert.IsNotNull(secondPageOfPodcastEpisodes);
+			Assert.AreNotEqual(firstPageOfPodcastEpisodes.First().PodcastEpisodeId, secondPageOfPodcastEpisodes.First().PodcastEpisodeId);
 		}
 	}
 }
