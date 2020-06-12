@@ -12,7 +12,7 @@ namespace Forem.Api.Tests
 		{
 			var podcastEpisodesService = new PodcastEpisodesService(BaseUri, HttpClient);
 			var podcastEpisodes = await podcastEpisodesService.GetPodcastEpisodesAsync();
-			Assert.IsNotNull(podcastEpisodes);
+			Assert.IsTrue(podcastEpisodes.Any());
 		}
 
 		[TestMethod]
@@ -29,9 +29,10 @@ namespace Forem.Api.Tests
 			var podcastEpisodesService = new PodcastEpisodesService(BaseUri, HttpClient);
 			var firstPageOfPodcastEpisodes = await podcastEpisodesService.GetPodcastEpisodesAsync("devdiscuss", 1, 2);
 			var secondPageOfPodcastEpisodes = await podcastEpisodesService.GetPodcastEpisodesAsync("devdiscuss", 2, 2);
-			Assert.IsNotNull(firstPageOfPodcastEpisodes);
-			Assert.IsNotNull(secondPageOfPodcastEpisodes);
+			Assert.IsTrue(firstPageOfPodcastEpisodes.Any());
+			Assert.IsTrue(secondPageOfPodcastEpisodes.Any());
 			Assert.AreNotEqual(firstPageOfPodcastEpisodes.First().PodcastEpisodeId, secondPageOfPodcastEpisodes.First().PodcastEpisodeId);
 		}
 	}
 }
+
