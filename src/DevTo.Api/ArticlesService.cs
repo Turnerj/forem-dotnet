@@ -35,7 +35,7 @@ namespace Forem.Api
 
 		public Task<IEnumerable<UserArticle>> GetUserArticlesAsync(string apiKey, int page = 1)
 		{
-			return GetAsync<IEnumerable<UserArticle>>($"/api/me/all", new
+			return GetAsync<IEnumerable<UserArticle>>("/api/me/all", new
 			{
 				page
 			}, apiKey);
