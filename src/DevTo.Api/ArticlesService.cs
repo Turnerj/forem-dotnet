@@ -33,43 +33,48 @@ namespace Forem.Api
 			}, apiKey);
 		}
 
-		public Task<IEnumerable<UserArticle>> GetUserArticlesAsync(string apiKey, int page = 1)
-		{
-			return GetAsync<IEnumerable<UserArticle>>("/api/me/all", new
-			{
-				page
-			}, apiKey);
-		}
+		public Task<IEnumerable<Article>> GetArticlesAsync(int page = 1, int perPage = 30)
+			=> GetAsync<IEnumerable<Article>>("/api/articles", new Dictionary<string, object>
+				{
+					{ "page", page },
+					{ "per_page", perPage },
+				});
 
-		public Task<Article> GetArticleAsync(int id)
-		{
-			return GetAsync<Article>($"/api/articles/{id}");
-		}
+		public Task<IEnumerable<Article>> GetArticlesByTagAsync(string tag, int page = 1, int perPage = 30)
+			=> GetAsync<IEnumerable<Article>>("/api/articles", new Dictionary<string, object>
+				{
+					{ "tag", tag },
+					{ "page", page },
+					{ "per_page", perPage },
+				});
 
-		public Task<IEnumerable<Article>> GetArticlesAsync(int page = 1)
-		{
-			return GetAsync<IEnumerable<Article>>("/api/articles", new
-			{
-				page
-			});
-		}
+		public Task<IEnumerable<Article>> GetArticlesByUserAsync(string username, int page = 1, int perPage = 30)
+			=> GetAsync<IEnumerable<Article>>("/api/articles", new Dictionary<string, object>
+				{
+					{ "username", username },
+					{ "page", page },
+					{ "per_page", perPage },
+				});
 
-		public Task<IEnumerable<Article>> GetArticlesByTagAsync(string tag, int page = 1)
-		{
-			return GetAsync<IEnumerable<Article>>("/api/articles", new
-			{
-				tag,
-				page
-			});
-		}
+		public Task<Article> GetArticleAsync(int id) => GetAsync<Article>($"/api/articles/{id}");
 
-		public Task<IEnumerable<Article>> GetArticlesByUserAsync(string username, int page = 1)
-		{
-			return GetAsync<IEnumerable<Article>>("/api/articles", new
-			{
-				username,
-				page
-			});
-		}
+		private Task<IEnumerable<UserArticle>> GetUserArticlesAsync(string path, string apiKey, int page, int perPage)
+			=> GetAsync<IEnumerable<UserArticle>>(path, new Dictionary<string, object>
+				{
+					{ "page", page },
+					{ "per_page", perPage },
+				}, apiKey);
+
+		public Task<IEnumerable<UserArticle>> GetUserArticlesAsync(string apiKey, int page = 1, int perPage = 30)
+			=> GetUserArticlesAsync("/api/articles/me", apiKey, page, perPage);
+
+		public Task<IEnumerable<UserArticle>> GetUserPublishedArticlesAsync(string apiKey, int page = 1, int perPage = 30)
+			=> GetUserArticlesAsync("/api/articles/me/published", apiKey, page, perPage);
+
+		public Task<IEnumerable<UserArticle>> GetUserUnpublishedArticlesAsync(string apiKey, int page = 1, int perPage = 30)
+			=> GetUserArticlesAsync("/api/articles/me/unpublished", apiKey, page, perPage);
+
+		public Task<IEnumerable<UserArticle>> GetUserAllArticlesAsync(string apiKey, int page = 1, int perPage = 30)
+			=> GetUserArticlesAsync("/api/articles/me/all", apiKey, page, perPage);
 	}
 }
