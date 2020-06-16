@@ -1,7 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Forem.Api.Tests
@@ -28,6 +27,27 @@ namespace Forem.Api.Tests
 		{
 			var articleService = new ArticlesService(BaseUri, HttpClient);
 			await articleService.GetUserArticlesAsync("NotARealApiKey");
+		}
+
+		[TestMethod, ExpectedException(typeof(ApiException))]
+		public async Task GetUserPublishedArticles_WithInvalidApiKeyThrowsException()
+		{
+			var articleService = new ArticlesService(BaseUri, HttpClient);
+			await articleService.GetUserPublishedArticlesAsync("NotARealApiKey");
+		}
+
+		[TestMethod, ExpectedException(typeof(ApiException))]
+		public async Task GetUserUnpublishedArticles_WithInvalidApiKeyThrowsException()
+		{
+			var articleService = new ArticlesService(BaseUri, HttpClient);
+			await articleService.GetUserUnpublishedArticlesAsync("NotARealApiKey");
+		}
+
+		[TestMethod, ExpectedException(typeof(ApiException))]
+		public async Task GetUserAllArticles_WithInvalidApiKeyThrowsException()
+		{
+			var articleService = new ArticlesService(BaseUri, HttpClient);
+			await articleService.GetUserAllArticlesAsync("NotARealApiKey");
 		}
 
 		[TestMethod]
