@@ -1,21 +1,21 @@
 # Forem API for .NET
-API interface for the blogging platform formerly [dev.to (DEV)](https://dev.to/) now [Forem](https://dev.to/devteam/for-empowering-community-2k6h) 
+API interface for the blogging platform formerly [dev.to (DEV)](https://dev.to/) now [Forem](https://www.forem.com/) 
 
-[![AppVeyor](https://img.shields.io/appveyor/ci/Turnerj/devto-dotnet/master.svg)](https://ci.appveyor.com/project/Turnerj/devto-dotnet)
-[![Codecov](https://img.shields.io/codecov/c/github/turnerj/devto-dotnet/master.svg)](https://codecov.io/gh/turnerj/devto-dotnet)
+[![AppVeyor](https://img.shields.io/appveyor/ci/Turnerj/forem-dotnet/master.svg)](https://ci.appveyor.com/project/Turnerj/forem-dotnet)
+[![Codecov](https://img.shields.io/codecov/c/github/turnerj/forem-dotnet/master.svg)](https://codecov.io/gh/turnerj/forem-dotnet)
 [![NuGet](https://img.shields.io/nuget/v/DevTo.Api.svg)](https://www.nuget.org/packages/DevTo.Api)
 
-## Supports
-- Create article
-- Update article
-- Get user articles (these are articles related to the API key)
-- Get articles
-- Get articles by tag
-- Get articles by user
-- Get article (including article body)
-- Get tags
+## API Support
 
-Where available, supports basic pagination to request additional data.
+We attempt to support all the API endpoints per the [Forem/DEV API](https://docs.dev.to/api/), which includes:
+
+- Articles
+- Users
+- Podcasts
+- Videos
+
+Where available, the library supports pagination and page size controls.
+If there is an API endpoint that isn't currently supported, feel free to open an issue or create a PR.
 
 ## Getting Started
 
