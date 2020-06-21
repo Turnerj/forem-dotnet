@@ -2,7 +2,7 @@
 
 namespace Forem.Api.Models
 {
-	public class ArticleFlareTag
+	public class FlareTag
 	{
 		[JsonProperty("name")]
 		public string Name { get; set; }

@@ -48,6 +48,6 @@ namespace Forem.Api.Models
 		[JsonProperty("user")]
 		public User User { get; set; }
 		[JsonProperty("organization")]
-		public ArticleOrganisation Organization { get; set; }
+		public Organisation Organization { get; set; }
 	}
 }

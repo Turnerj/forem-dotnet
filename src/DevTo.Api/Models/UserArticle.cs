@@ -12,6 +12,6 @@ namespace Forem.Api.Models
 		public bool BodyMarkdown { get; set; }
 
 		[JsonProperty("flare_tag")]
-		public ArticleFlareTag FlareTag { get; set; }
+		public FlareTag FlareTag { get; set; }
 	}
 }

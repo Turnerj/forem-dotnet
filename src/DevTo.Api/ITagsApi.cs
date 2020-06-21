@@ -12,7 +12,8 @@ namespace Forem.Api
 		/// Retrieve all tags, ordered by popularity.
 		/// </summary>
 		/// <param name="page">The page number for the tags.</param>
+		/// <param name="perPage">Page size (the number of items to return per page).</param>
 		/// <returns></returns>
-		Task<IEnumerable<Tag>> GetTagsAsync(int page = 1);
+		Task<IEnumerable<Tag>> GetTagsAsync(int page, int perPage);
 	}
 }

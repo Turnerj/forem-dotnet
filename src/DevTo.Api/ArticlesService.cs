@@ -13,7 +13,7 @@ namespace Forem.Api
 
 		public Task<UserArticle> CreateArticleAsync(string apiKey, string markdown)
 		{
-			return PutAsync<UserArticle>("/api/articles", new ArticleUpdate
+			return PostAsync<UserArticle>("/api/articles", new ArticleUpdate
 			{
 				Article = new ArticleUpdate.ArticlePayload
 				{
