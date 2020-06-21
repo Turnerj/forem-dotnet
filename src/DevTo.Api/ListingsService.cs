@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
 using System.Net.Http;
-using System.Reflection;
 using System.Threading.Tasks;
-using Forem.Api.Models;
 using Forem.Api.Models.Listing;
-using Newtonsoft.Json;
 
 namespace Forem.Api
 {
@@ -37,9 +32,9 @@ namespace Forem.Api
 		public Task<CompleteListing> UpdateListingAsync(string apiKey, long id, ListingAction action, ListingProperties properties = null)
 			=> PutAsync<CompleteListing>($"/api/listings/{id}", CreateRequestPayload(properties, action), apiKey);
 
-		private dynamic CreateRequestPayload(ListingProperties properties, ListingAction action)
+		private IDictionary<string, object> CreateRequestPayload(ListingProperties properties, ListingAction action)
 		{
-			var listing = new ExpandoObject() as IDictionary<string, object>;
+			var listing = new Dictionary<string, object>();
 
 			switch (action)
 			{
@@ -57,22 +52,50 @@ namespace Forem.Api
 						listing.Add("action", action);
 					}
 
-					var props = properties.GetType().GetProperties();
-
-					foreach (var prop in props)
+					if (!string.IsNullOrEmpty(properties.Title))
 					{
-						if (prop.GetValue(properties) != null)
-						{
-							var jsonProp = prop.GetCustomAttributes().First() as JsonPropertyAttribute;
+						listing.Add("title", properties.Title);
+					}
 
-							listing.Add(jsonProp.PropertyName, prop.GetValue(properties));
-						}
+					if (!string.IsNullOrEmpty(properties.BodyMarkdown))
+					{
+						listing.Add("body_markdown", properties.BodyMarkdown);
+					}
+
+					if (properties.Category != null)
+					{
+						listing.Add("category", properties.Category);
+					}
+
+					if (properties.Tags != null)
+					{
+						listing.Add("tags", properties.Tags);
+					}
+
+					if (properties.ExpiresAt != null)
+					{
+						listing.Add("expires_at", properties.ExpiresAt);
+					}
+
+					if (properties.ContactViaConnect != null)
+					{
+						listing.Add("contact_via_connect", properties.ContactViaConnect);
+					}
+
+					if (properties.Location != null)
+					{
+						listing.Add("location", properties.Location);
+					}
+
+					if (properties.OrganizationId != null)
+					{
+						listing.Add("organization_id", properties.OrganizationId);
 					}
 
 					break;
 			}
 
-			return new { listing };
+			return new Dictionary<string, object> {{ "listing", listing }};
 		}
 	}
 }
