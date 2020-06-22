@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Forem.Api.Models
 {
-	public class ArticleOrganisation
+	public class Organisation
 	{
 		[JsonProperty("name")]
 		public string Name { get; set; }

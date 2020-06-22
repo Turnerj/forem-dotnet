@@ -58,10 +58,10 @@ namespace Forem.Api
 			}
 		}
 
-		protected async Task<TResponse> PutAsync<TResponse>(string path, object body, string apiKey)
+		private async Task<TResponse> SendAsync<TResponse>(string path, object body, string apiKey, HttpMethod method)
 		{
 			var uri = BuildRequestUri(path, null);
-			var message = new HttpRequestMessage(HttpMethod.Put, uri);
+			var message = new HttpRequestMessage(method, uri);
 			message.Headers.Add("api-key", apiKey);
 			message.Content = new StringContent(JsonConvert.SerializeObject(body));
 
@@ -93,6 +93,12 @@ namespace Forem.Api
 				}
 			}
 		}
+
+		protected async Task<TResponse> PutAsync<TResponse>(string path, object body, string apiKey)
+			=> await SendAsync<TResponse>(path, body, apiKey, HttpMethod.Put);
+
+		protected async Task<TResponse> PostAsync<TResponse>(string path, object body, string apiKey)
+			=> await SendAsync<TResponse>(path, body, apiKey, HttpMethod.Post);
 
 		private Uri BuildRequestUri(string path, object parameters)
 		{
