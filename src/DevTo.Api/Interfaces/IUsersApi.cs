@@ -1,7 +1,7 @@
 ﻿using Forem.Api.Models;
 using System.Threading.Tasks;
 
-namespace Forem.Api
+namespace Forem.Api.Interfaces
 {
 	public interface IUsersApi
 	{

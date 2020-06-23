@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Forem.Api.Models.Listing;
 
-namespace Forem.Api
+namespace Forem.Api.Interfaces
 {
 	public interface IListingsApi
 	{

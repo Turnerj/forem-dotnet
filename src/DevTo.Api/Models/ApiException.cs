@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace Forem.Api
+namespace Forem.Api.Models
 {
 	public class ApiException : Exception
 	{
