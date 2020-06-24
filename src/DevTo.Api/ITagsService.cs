@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Forem.Api.Interfaces
+namespace Forem.Api
 {
-	public interface ITagsApi
+	public interface ITagsService
 	{
 		/// <summary>
 		/// Retrieve all tags, ordered by popularity.

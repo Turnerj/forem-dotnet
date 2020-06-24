@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Forem.Api.Interfaces;
+using Forem.Api;
 using Forem.Api.Models;
 
-namespace Forem.Api.Services
+namespace Forem.Api
 {
-	public class UsersService : ApiService, IUsersApi
+	public class UsersService : ApiService, IUsersService
 	{
 		public UsersService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 

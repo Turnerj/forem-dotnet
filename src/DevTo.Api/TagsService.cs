@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Forem.Api.Interfaces;
 using Forem.Api.Models;
 
-namespace Forem.Api.Services
+namespace Forem.Api
 {
-	public class TagsService : ApiService, ITagsApi
+	public class TagsService : ApiService, ITagsService
 	{
 		public TagsService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 

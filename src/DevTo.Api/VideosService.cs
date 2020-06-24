@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Forem.Api.Interfaces;
+using Forem.Api;
 using Forem.Api.Models;
 
-namespace Forem.Api.Services
+namespace Forem.Api
 {
-	public class VideosService : ApiService, IVideosApi
+	public class VideosService : ApiService, IVideosService
 	{
 		public VideosService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 

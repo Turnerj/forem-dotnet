@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Forem.Api.Services;
+using Forem.Api;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Forem.Api.Tests

@@ -1,5 +1,5 @@
 using Forem.Api.Models;
-using Forem.Api.Services;
+using Forem.Api;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;

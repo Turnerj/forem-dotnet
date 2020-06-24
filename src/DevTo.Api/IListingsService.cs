@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Forem.Api.Models.Listing;
 
-namespace Forem.Api.Interfaces
+namespace Forem.Api
 {
-	public interface IListingsApi
+	public interface IListingsService
 	{
 		/// <summary>
 		/// Retrieves a list of listings.
