@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using Forem.Api.Models;
 
-namespace Forem.Api.Interfaces
+namespace Forem.Api
 {
-	public interface IWebhooksApi
+	public interface IWebhooksService
 	{
 		/// <summary>
 		/// Retrieves a list of webhooks they have previously registered.

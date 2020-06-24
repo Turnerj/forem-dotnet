@@ -39,6 +39,10 @@ namespace Microsoft.Extensions.DependencyInjection
 			services.AddTransient<IVideosService, VideosService>(sp =>
 				new VideosService(baseUri, sp.GetService<HttpClient>())
 			);
+
+			services.AddTransient<IWebhooksService, WebhooksService>(sp =>
+				new WebhooksService(baseUri, sp.GetService<HttpClient>())
+			);
 		}
 	}
 }
