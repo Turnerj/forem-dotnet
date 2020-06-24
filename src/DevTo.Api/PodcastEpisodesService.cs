@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Forem.Api.Interfaces;
 using Forem.Api.Models;
 
-namespace Forem.Api.Services
+namespace Forem.Api
 {
-	public class PodcastEpisodesService : ApiService, IPodcastEpisodesApi
+	public class PodcastEpisodesService : ApiService, IPodcastEpisodesService
 	{
 		public PodcastEpisodesService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 

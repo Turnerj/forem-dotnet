@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Forem.Api.Interfaces;
 using Forem.Api.Models;
 
-namespace Forem.Api.Services
+namespace Forem.Api
 {
-	public class FollowersService : ApiService, IFollowersApi
+	public class FollowersService : ApiService, IFollowersService
 	{
 		public FollowersService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 

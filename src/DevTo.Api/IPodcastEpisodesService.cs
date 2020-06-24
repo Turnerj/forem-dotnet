@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Forem.Api.Interfaces
+namespace Forem.Api
 {
-	public interface IPodcastEpisodesApi
+	public interface IPodcastEpisodesService
 	{
 		/// <summary>
 		/// Retrieves active podcast episodes that belong to published podcasts available on the platform, ordered by descending publication date.

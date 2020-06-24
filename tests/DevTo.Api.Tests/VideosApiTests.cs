@@ -1,4 +1,4 @@
-using Forem.Api.Services;
+using Forem.Api;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Threading.Tasks;

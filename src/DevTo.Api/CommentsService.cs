@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Forem.Api.Interfaces;
 using Forem.Api.Models;
 
-namespace Forem.Api.Services
+namespace Forem.Api
 {
-	public class CommentsService : ApiService, ICommentsApi
+	public class CommentsService : ApiService, ICommentsService
 	{
 		public CommentsService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 

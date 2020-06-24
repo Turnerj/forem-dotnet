@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Forem.Api.Interfaces
+namespace Forem.Api
 {
-	public interface IFollowersApi
+	public interface IFollowersService
 	{
 		/// <summary>
 		/// Retrieves a list of the followers they have.

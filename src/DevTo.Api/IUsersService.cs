@@ -1,9 +1,9 @@
 ﻿using Forem.Api.Models;
 using System.Threading.Tasks;
 
-namespace Forem.Api.Interfaces
+namespace Forem.Api
 {
-	public interface IUsersApi
+	public interface IUsersService
 	{
 		/// <summary>
 		/// Retrieve a single user by id.

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Forem.Api.Interfaces
+namespace Forem.Api
 {
-	public interface IVideosApi
+	public interface IVideosService
 	{
 		/// <summary>
 		/// Retrieve a list of articles that are uploaded with a video.

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Forem.Api.Interfaces
+namespace Forem.Api
 {
-	public interface IArticlesApi
+	public interface IArticlesService
 	{
 		/// <summary>
 		/// Creates an article with the given markdown. Returns the new created article.
