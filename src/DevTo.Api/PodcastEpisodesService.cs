@@ -6,7 +6,7 @@ using Forem.Api.Models;
 
 namespace Forem.Api
 {
-	public class PodcastEpisodesService : ApiService, IPodcastEpisodesApi
+	public class PodcastEpisodesService : ApiService, IPodcastEpisodesService
 	{
 		public PodcastEpisodesService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 

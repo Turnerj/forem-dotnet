@@ -6,7 +6,7 @@ using Forem.Api.Models.Listing;
 
 namespace Forem.Api
 {
-	public class ListingsService : ApiService, IListingsApi
+	public class ListingsService : ApiService, IListingsService
 	{
 		public ListingsService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 

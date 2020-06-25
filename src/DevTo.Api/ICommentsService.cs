@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Forem.Api
 {
-	public interface ICommentsApi
+	public interface ICommentsService
 	{
 		/// <summary>
 		/// Retrieves all comments belonging to an article as threaded conversations.

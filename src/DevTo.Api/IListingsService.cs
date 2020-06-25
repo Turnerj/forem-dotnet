@@ -4,7 +4,7 @@ using Forem.Api.Models.Listing;
 
 namespace Forem.Api
 {
-	public interface IListingsApi
+	public interface IListingsService
 	{
 		/// <summary>
 		/// Retrieves a list of listings.

@@ -6,7 +6,7 @@ using Forem.Api.Models;
 
 namespace Forem.Api
 {
-	public class TagsService : ApiService, ITagsApi
+	public class TagsService : ApiService, ITagsService
 	{
 		public TagsService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 

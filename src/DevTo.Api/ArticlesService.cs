@@ -7,7 +7,7 @@ using Forem.Api.Models;
 
 namespace Forem.Api
 {
-	public class ArticlesService : ApiService, IArticlesApi
+	public class ArticlesService : ApiService, IArticlesService
 	{
 		public ArticlesService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 
