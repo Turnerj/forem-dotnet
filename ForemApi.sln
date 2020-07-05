@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevTo.Api", "src\DevTo.Api\DevTo.Api.csproj", "{A866960B-5F87-4DAA-A6C6-9CC9E7821A72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forem.Api", "src\Forem.Api\Forem.Api.csproj", "{A866960B-5F87-4DAA-A6C6-9CC9E7821A72}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4D07A422-5B40-4533-B363-E84898CB5206}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4D07A422-5B4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F8F27498-81DF-4DB4-8B64-A311BFD7C8C4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevTo.Api.Tests", "tests\DevTo.Api.Tests\DevTo.Api.Tests.csproj", "{897862D0-BBCC-4F74-A14D-0DD0B7C0D8AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forem.Api.Tests", "tests\Forem.Api.Tests\Forem.Api.Tests.csproj", "{897862D0-BBCC-4F74-A14D-0DD0B7C0D8AA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "global", "global", "{535D1AD4-DC61-45CC-845A-304DDBBD58A3}"
 	ProjectSection(SolutionItems) = preProject

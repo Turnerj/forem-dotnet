@@ -5,10 +5,10 @@
     <PackageId>$(AssemblyName)</PackageId>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>License.txt</PackageLicenseFile>
-    <PackageProjectUrl>https://github.com/Turnerj/devto-dotnet</PackageProjectUrl>
-    <PackageBaseTags>dev.to,devto,DEV,Forem</PackageBaseTags>
+    <PackageProjectUrl>https://github.com/Turnerj/forem-dotnet</PackageProjectUrl>
+    <PackageBaseTags>Forem,dev.to,devto,DEV</PackageBaseTags>
     
-    <RepositoryUrl>https://github.com/Turnerj/devto-dotnet.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Turnerj/forem-dotnet.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryBranch>master</RepositoryBranch>
 
