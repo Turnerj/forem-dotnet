@@ -32,18 +32,18 @@ using Forem.Api;
 
 public class MyClass
 {
-	private IArticlesApi ArticlesApi { get; }
-	private ITagsApi TagsApi { get; }
+	private IArticlesService ArticlesService { get; }
+	private ITagsService TagsService { get; }
 
-	public MyClass(IArticlesApi articlesApi, ITagsApi tagsApi)
+	public MyClass(IArticlesService articlesService, ITagsService tagsService)
 	{
-		ArticlesApi = articlesApi;
-		TagsApi = tagsApi;
+		ArticlesService = articlesService;
+		TagsService = tagsService;
 	}
 
 	public async Task DoWork()
 	{
-		var articles = await ArticlesApi.GetArticlesAsync();
+		var articles = await ArticlesService.GetArticlesAsync();
 		
 		// Your code here...
 	}
