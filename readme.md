@@ -3,7 +3,7 @@ API interface for the blogging platform formerly [dev.to (DEV)](https://dev.to/)
 
 [![AppVeyor](https://img.shields.io/appveyor/ci/Turnerj/forem-dotnet/master.svg)](https://ci.appveyor.com/project/Turnerj/forem-dotnet)
 [![Codecov](https://img.shields.io/codecov/c/github/turnerj/forem-dotnet/master.svg)](https://codecov.io/gh/turnerj/forem-dotnet)
-[![NuGet](https://img.shields.io/nuget/v/DevTo.Api.svg)](https://www.nuget.org/packages/DevTo.Api)
+[![NuGet](https://img.shields.io/nuget/v/Forem.Api.svg)](https://www.nuget.org/packages/Forem.Api)
 
 ## API Support
 
