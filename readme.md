@@ -1,5 +1,5 @@
 # Forem API for .NET
-API interface for the blogging platform formerly [dev.to (DEV)](https://dev.to/) now [Forem](https://www.forem.com/) 
+API interface for [Forem](https://www.forem.com/) apps. Forem is the platform which powers [DEV](https://dev.to) and other online communities.
 
 [![AppVeyor](https://img.shields.io/appveyor/ci/Turnerj/forem-dotnet/master.svg)](https://ci.appveyor.com/project/Turnerj/forem-dotnet)
 [![Codecov](https://img.shields.io/codecov/c/github/turnerj/forem-dotnet/master.svg)](https://codecov.io/gh/turnerj/forem-dotnet)
