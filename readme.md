@@ -28,23 +28,26 @@ To install the library run the below on Nuget Manager Console:
 ## Usage
 
 - For Some of the methods, DEV API key `apiKey`  is required to be passed to authenticate you as a user. 
-  To Obtain one, check the authentication section [GET API KEY](https://docs.dev.to/api/#section/Authentication)
+  To obtain one, check the authentication section [GET API KEY](https://docs.dev.to/api/#section/Authentication)
 
 - Using DI, Add the service to the container just by doing the below:
-  `services.AddForemApi(new Uri("https://dev.to/"));`
+  ```csharp
+  services.AddForemApi(new Uri("https://dev.to/"));
+  
+  ```
 
 - Configure your `HttpClient` DI by adding the below snippet to your `startup.cs` file (or wherever you're configuring your DI things):
 
-```csharp
-	services.AddHttpClient();
-	services.AddTransient(provider =>
-	{
-		return provider.GetRequiredService<IHttpClientFactory>().CreateClient(string.Empty);
-	});
+  ```csharp
+  services.AddHttpClient();
+  services.AddTransient(provider =>
+  {
+     return provider.GetRequiredService<IHttpClientFactory>().CreateClient(string.Empty);
+  });
 
-```
+ ```
 
-Havng all this setup, then you're good to go!!
+Having all this setup, then you're good to go!!
 
 
 ## Snippets
@@ -52,45 +55,45 @@ Havng all this setup, then you're good to go!!
 ### Articles
 
 ```csharp
-    using Forem.Api;
+using Forem.Api;
 
-	
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ArticleController : ControllerBase
-    {
-        private readonly IArticlesService _articlesService;
-        private readonly ITagsService _tagsService;
 
-        //Without Dependency Injection - global
-        ArticlesService articlesService = new ArticlesService(new Uri("https://dev.to/"), new HttpClient());
+[Route("api/[controller]")]
+[ApiController]
+public class ArticleController : ControllerBase
+{
+private readonly IArticlesService _articlesService;
+private readonly ITagsService _tagsService;
 
-        //With Dependency Injection
-        public ArticleController(IArticlesService articlesService, ITagsService tagsService)
-        {
-            _articlesService = articlesService;
-            _tagsService = tagsService;
-        }
+//Without Dependency Injection - global
+ArticlesService articlesService = new ArticlesService(new Uri("https://dev.to/"), new HttpClient());
+
+//With Dependency Injection
+public ArticleController(IArticlesService articlesService, ITagsService tagsService)
+{
+    _articlesService = articlesService;
+    _tagsService = tagsService;
+}
 
 ```
 
 To get all articles you simply just call `GetArticlesAsync` passing optional params `page` and `perPage` with default values `1` & `30` respectively.
 
 ```csharp
-	[HttpGet("all")]
-        public async Task<IActionResult> GetAllArticles(int page, int itemPerPage)
-        {
-            //Without DI - local
-            //var articlesService = new ArticlesService(new Uri("https://dev.to/"), new HttpClient());
-           
-            var articles = await articlesService.GetArticlesAsync();
+[HttpGet("all")]
+public async Task<IActionResult> GetAllArticles(int page, int itemPerPage)
+{
+    //Without DI - local
+    //var articlesService = new ArticlesService(new Uri("https://dev.to/"), new HttpClient());
 
-            articles = await _articlesService.GetArticlesAsync(page, itemPerPage);
-            
-            return Ok(articles);
-        }
+    var articles = await articlesService.GetArticlesAsync();
+
+    articles = await _articlesService.GetArticlesAsync(page, itemPerPage);
+
+    return Ok(articles);
+}
 
 ```
 
-Feel free to check out other methods/endpoints [Aticles Doc](https://docs.dev.to/api/#operation/getArticles)
+Feel free to check out other methods/endpoints [Articles Doc](https://docs.dev.to/api/#operation/getArticles)
 
