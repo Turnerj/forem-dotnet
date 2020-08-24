@@ -44,8 +44,8 @@ To install the library run the below on Nuget Manager Console:
   {
      return provider.GetRequiredService<IHttpClientFactory>().CreateClient(string.Empty);
   });
-
- ```
+  
+  ```
 
 Having all this setup, then you're good to go!!
 
