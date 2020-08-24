@@ -19,45 +19,81 @@ If there is an API endpoint that isn't currently supported, feel free to open an
 
 ## Getting Started
 
-### With DI
+### Installation
 
-```csharp
-using Microsoft.Extensions.DependencyInjection;
+To install the library run the below on Nuget Manager Console:
 
-services.AddForemApi(new Uri("https://dev.to/"));
-```
+`Install-Package Forem.Api -Version 0.4.0`	
+
+## Usage
+
+- For Some of the methods, DEV API key `apiKey`  is required to be passed to authenticate you as a user. 
+  To obtain one, check the authentication section [GET API KEY](https://docs.dev.to/api/#section/Authentication)
+
+- Using DI, Add the service to the container just by doing the below:
+  ```csharp
+  services.AddForemApi(new Uri("https://dev.to/"));
+  
+  ```
+
+- Configure your `HttpClient` DI by adding the below snippet to your `startup.cs` file (or wherever you're configuring your DI things):
+
+  ```csharp
+  services.AddHttpClient();
+  services.AddTransient(provider =>
+  {
+     return provider.GetRequiredService<IHttpClientFactory>().CreateClient(string.Empty);
+  });
+  
+  ```
+
+Having all this setup, then you're good to go!!
+
+
+## Snippets
+
+### Articles
 
 ```csharp
 using Forem.Api;
 
-public class MyClass
+
+[Route("api/[controller]")]
+[ApiController]
+public class ArticleController : ControllerBase
 {
-	private IArticlesService ArticlesService { get; }
-	private ITagsService TagsService { get; }
+private readonly IArticlesService _articlesService;
+private readonly ITagsService _tagsService;
 
-	public MyClass(IArticlesService articlesService, ITagsService tagsService)
-	{
-		ArticlesService = articlesService;
-		TagsService = tagsService;
-	}
+//Without Dependency Injection - global
+ArticlesService articlesService = new ArticlesService(new Uri("https://dev.to/"), new HttpClient());
 
-	public async Task DoWork()
-	{
-		var articles = await ArticlesService.GetArticlesAsync();
-		
-		// Your code here...
-	}
+//With Dependency Injection
+public ArticleController(IArticlesService articlesService, ITagsService tagsService)
+{
+    _articlesService = articlesService;
+    _tagsService = tagsService;
 }
+
 ```
 
-### Without DI
+To get all articles you simply just call `GetArticlesAsync` passing optional params `page` and `perPage` with default values `1` & `30` respectively.
 
 ```csharp
-using Forem.Api;
-using System.Net.Http;
+[HttpGet("all")]
+public async Task<IActionResult> GetAllArticles(int page, int itemPerPage)
+{
+    //Without DI - local
+    //var articlesService = new ArticlesService(new Uri("https://dev.to/"), new HttpClient());
 
-var articlesService = new ArticlesService(new Uri("https://dev.to/"), new HttpClient());
-var tagsService = new TagsService(new Uri("https://dev.to/"), new HttpClient());
+    var articles = await articlesService.GetArticlesAsync();
 
-var articles = await articlesService.GetArticlesAsync();
+    articles = await _articlesService.GetArticlesAsync(page, itemPerPage);
+
+    return Ok(articles);
+}
+
 ```
+
+Feel free to check out other methods/endpoints [Articles Doc](https://docs.dev.to/api/#operation/getArticles)
+
