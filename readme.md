@@ -27,13 +27,13 @@ To install the library run the below on Nuget Manager Console:
 
 ## Usage
 
--For Some of the methods, DEV API key `apiKey`  is required is be passed for authenticate the you as a user. 
-To Obtain one, check the authentication section [GET API KEY](https://docs.dev.to/api/#section/Authentication)
+- For Some of the methods, DEV API key `apiKey`  is required to be passed to authenticate you as a user. 
+  To Obtain one, check the authentication section [GET API KEY](https://docs.dev.to/api/#section/Authentication)
 
--Using DI, Add the service to the container just by doing the below:
-`services.AddForemApi(new Uri("https://dev.to/"));`
+- Using DI, Add the service to the container just by doing the below:
+  `services.AddForemApi(new Uri("https://dev.to/"));`
 
--Configure your `HttpClient` DI by adding the below snippet to your `startup.cs` file (or wherever you're configuring your DI things):
+- Configure your `HttpClient` DI by adding the below snippet to your `startup.cs` file (or wherever you're configuring your DI things):
 
 ```csharp
 	services.AddHttpClient();
@@ -41,6 +41,7 @@ To Obtain one, check the authentication section [GET API KEY](https://docs.dev.t
 	{
 		return provider.GetRequiredService<IHttpClientFactory>().CreateClient(string.Empty);
 	});
+
 ```
 
 Havng all this setup, then you're good to go!!
