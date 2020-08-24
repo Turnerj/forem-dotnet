@@ -9,39 +9,39 @@ namespace Microsoft.Extensions.DependencyInjection
 		public static void AddForemApi(this IServiceCollection services, Uri baseUri)
 		{
 			services.AddTransient<IArticlesService, ArticlesService>(sp =>
-				new ArticlesService(baseUri, sp.GetService<HttpClient>())
+				new ArticlesService(baseUri, sp.GetRequiredService<HttpClient>())
 			);
 
 			services.AddTransient<ICommentsService, CommentsService>(sp =>
-				new CommentsService(baseUri, sp.GetService<HttpClient>())
+				new CommentsService(baseUri, sp.GetRequiredService<HttpClient>())
 			);
 
 			services.AddTransient<IFollowersService, FollowersService>(sp =>
-				new FollowersService(baseUri, sp.GetService<HttpClient>())
+				new FollowersService(baseUri, sp.GetRequiredService<HttpClient>())
 			);
 
 			services.AddTransient<IListingsService, ListingsService>(sp =>
-				new ListingsService(baseUri, sp.GetService<HttpClient>())
+				new ListingsService(baseUri, sp.GetRequiredService<HttpClient>())
 			);
 
 			services.AddTransient<IPodcastEpisodesService, PodcastEpisodesService>(sp =>
-				new PodcastEpisodesService(baseUri, sp.GetService<HttpClient>())
+				new PodcastEpisodesService(baseUri, sp.GetRequiredService<HttpClient>())
 			);
 
 			services.AddTransient<ITagsService, TagsService>(sp =>
-				new TagsService(baseUri, sp.GetService<HttpClient>())
+				new TagsService(baseUri, sp.GetRequiredService<HttpClient>())
 			);
 
 			services.AddTransient<IUsersService, UsersService>(sp =>
-				new UsersService(baseUri, sp.GetService<HttpClient>())
+				new UsersService(baseUri, sp.GetRequiredService<HttpClient>())
 			);
 
 			services.AddTransient<IVideosService, VideosService>(sp =>
-				new VideosService(baseUri, sp.GetService<HttpClient>())
+				new VideosService(baseUri, sp.GetRequiredService<HttpClient>())
 			);
 
 			services.AddTransient<IWebhooksService, WebhooksService>(sp =>
-				new WebhooksService(baseUri, sp.GetService<HttpClient>())
+				new WebhooksService(baseUri, sp.GetRequiredService<HttpClient>())
 			);
 		}
 	}
