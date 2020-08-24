@@ -25,7 +25,7 @@ To install the library run the below on Nuget Manager Console:
 
 `Install-Package Forem.Api -Version 0.4.0`	
 
-##Usage
+## Usage
 
 -For Some of the methods, DEV API key `apiKey`  is required is be passed for authenticate the you as a user. 
 To Obtain one, check the authentication section [GET API KEY](https://docs.dev.to/api/#section/Authentication)
@@ -46,12 +46,12 @@ To Obtain one, check the authentication section [GET API KEY](https://docs.dev.t
 Havng all this setup, then you're good to go!!
 
 
-##Snippets
+## Snippets
 
-###Articles
+### Articles
 
 ```csharp
-	using Forem.Api;
+    using Forem.Api;
 
 	
     [Route("api/[controller]")]
@@ -76,7 +76,7 @@ Havng all this setup, then you're good to go!!
 To get all articles you simply just call `GetArticlesAsync` passing optional params `page` and `perPage` with default values `1` & `30` respectively.
 
 ```csharp
-	    [HttpGet("all")]
+	[HttpGet("all")]
         public async Task<IActionResult> GetAllArticles(int page, int itemPerPage)
         {
             //Without DI - local
