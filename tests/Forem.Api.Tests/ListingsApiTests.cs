@@ -74,7 +74,7 @@ namespace Forem.Api.Tests
 		public async Task GetListing()
 		{
 			var listingService = new ListingsService(BaseUri, HttpClient);
-			var listing = await listingService.GetListingAsync(1635);
+			var listing = await listingService.GetListingAsync(4008);
 			Assert.IsNotNull(listing);
 		}
 	}
