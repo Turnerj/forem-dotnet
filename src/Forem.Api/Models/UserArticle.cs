@@ -9,9 +9,7 @@ namespace Forem.Api.Models
 		[JsonProperty("published")]
 		public bool Published { get; set; }
 		[JsonProperty("body_markdown")]
-		public bool BodyMarkdown { get; set; }
+		public string BodyMarkdown { get; set; }
 
-		[JsonProperty("flare_tag")]
-		public FlareTag FlareTag { get; set; }
 	}
 }

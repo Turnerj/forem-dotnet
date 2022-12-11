@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Forem.Api.Serialization;
 using Newtonsoft.Json;
 
 namespace Forem.Api.Internal
@@ -27,9 +28,11 @@ namespace Forem.Api.Internal
 		/// </summary>
 		[JsonProperty("body_markdown")]
 		public string Markdown { get; set; }
+
 		[JsonProperty("tags")]
-		public string[] Tags { get; set; }
-		
+		[JsonConverter(typeof(MultiTypeTagConverter))]
+		public IEnumerable<string> Tags { get; set; }
+
 		/// <summary>
 		/// Article series name. <br />
 		/// All articles belonging to the same series need to have the same name in this parameter.
