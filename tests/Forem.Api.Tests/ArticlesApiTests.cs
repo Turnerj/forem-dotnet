@@ -98,7 +98,7 @@ namespace Forem.Api.Tests
 			var articleService = new ArticlesService(BaseUri, HttpClient);
 			var articles = await articleService.GetArticlesByTagAsync("react");
 			Assert.IsNotNull(articles);
-			Assert.IsTrue(articles.All(a => a.TagList.Contains("react", StringComparer.OrdinalIgnoreCase)));
+			Assert.IsTrue(articles.All(a => a.TagList.Contains("react", StringComparison.OrdinalIgnoreCase)));
 		}
 
 		[TestMethod]
