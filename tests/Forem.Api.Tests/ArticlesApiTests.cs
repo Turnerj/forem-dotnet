@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Forem.Api.Internal;
 
 namespace Forem.Api.Tests
 {
@@ -14,14 +15,34 @@ namespace Forem.Api.Tests
 		public async Task CreateArticle_WithInvalidApiKeyThrowsException()
 		{
 			var articleService = new ArticlesService(BaseUri, HttpClient);
-			await articleService.CreateArticleAsync("NotARealApiKey", "Hello World");
+
+			var article = new ArticlePayload
+			{
+				Title = "Hello, World",
+				Published = false,
+				Markdown = "Hello DEV, this is my first post",
+				Tags = new string[] { "discuss", "help" },
+				Series = "Hello series"
+			};
+
+			await articleService.CreateArticleAsync("NotARealApiKey", article);
 		}
 
 		[TestMethod, ExpectedException(typeof(ApiException))]
 		public async Task UpdateArticle_WithInvalidApiKeyThrowsException()
 		{
 			var articleService = new ArticlesService(BaseUri, HttpClient);
-			await articleService.UpdateArticleAsync("NotARealApiKey", 5, "Hello World");
+
+			var article = new ArticlePayload
+			{
+				Title = "Hello, World",
+				Published = false,
+				Markdown = "Hello DEV, this is my first post",
+				Tags = new string[] { "discuss", "help" },
+				Series = "Hello series"
+			};
+
+			await articleService.UpdateArticleAsync("NotARealApiKey", 5, article);
 		}
 
 		[TestMethod, ExpectedException(typeof(ApiException))]
