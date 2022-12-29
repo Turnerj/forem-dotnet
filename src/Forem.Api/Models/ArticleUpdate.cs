@@ -4,7 +4,7 @@ using System.Text;
 using Forem.Api.Serialization;
 using Newtonsoft.Json;
 
-namespace Forem.Api.Internal
+namespace Forem.Api.Models
 {
 	internal class ArticleUpdate
 	{

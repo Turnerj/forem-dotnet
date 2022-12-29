@@ -1,5 +1,4 @@
-﻿using Forem.Api.Internal;
-using Forem.Api.Models;
+﻿using Forem.Api.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
