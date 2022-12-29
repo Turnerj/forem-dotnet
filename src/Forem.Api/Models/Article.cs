@@ -27,12 +27,12 @@ namespace Forem.Api.Models
 		[JsonProperty("social_image")]
 		public Uri SocialImage { get; set; }
 		
-		[JsonProperty("tag_list")]
-		public string TagList { get; set; }
-
 		[JsonProperty("tags")]
+		public string Tags { get; set; }
+
+		[JsonProperty("tag_list")]
 		[JsonConverter(typeof(MultiTypeTagConverter))]
-		public IEnumerable<string> Tags { get; set; }
+		public IEnumerable<string> TagList { get; set; }
 
 		[JsonProperty("slug")]
 		public string Slug { get; set; }
