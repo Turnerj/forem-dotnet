@@ -1,10 +1,8 @@
 using Forem.Api.Models;
-using Forem.Api;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Forem.Api.Internal;
 
 namespace Forem.Api.Tests
 {
@@ -98,7 +96,7 @@ namespace Forem.Api.Tests
 			var articleService = new ArticlesService(BaseUri, HttpClient);
 			var articles = await articleService.GetArticlesByTagAsync("react");
 			Assert.IsNotNull(articles);
-			Assert.IsTrue(articles.All(a => a.TagList.Contains("react", StringComparison.OrdinalIgnoreCase)));
+			Assert.IsTrue(articles.All(a => a.Tags.Contains("react", StringComparison.OrdinalIgnoreCase)));
 		}
 
 		[TestMethod]
