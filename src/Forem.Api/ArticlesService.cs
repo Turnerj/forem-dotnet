@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Forem.Api.Internal;
 using Forem.Api.Models;
 
 namespace Forem.Api
@@ -11,24 +10,32 @@ namespace Forem.Api
 	{
 		public ArticlesService(Uri baseUri, HttpClient httpClient) : base(baseUri, httpClient) { }
 
-		public Task<UserArticle> CreateArticleAsync(string apiKey, string markdown)
+		public Task<UserArticle> CreateArticleAsync(string apiKey, ArticlePayload article)
 		{
 			return PostAsync<UserArticle>("/api/articles", new ArticleUpdate
 			{
-				Article = new ArticleUpdate.ArticlePayload
+				Article = new ArticlePayload
 				{
-					Markdown = markdown
+					Title = article.Title,
+					Published = article.Published,
+					Markdown = article.Markdown,
+					Tags = article.Tags,
+					Series = article.Series,
 				}
 			}, apiKey);
 		}
 
-		public Task<UserArticle> UpdateArticleAsync(string apiKey, int id, string markdown)
+		public Task<UserArticle> UpdateArticleAsync(string apiKey, int id, ArticlePayload article)
 		{
 			return PutAsync<UserArticle>($"/api/articles/{id}", new ArticleUpdate
 			{
-				Article = new ArticleUpdate.ArticlePayload
+				Article = new ArticlePayload
 				{
-					Markdown = markdown
+					Title = article.Title,
+					Published = article.Published,
+					Markdown = article.Markdown,
+					Tags = article.Tags,
+					Series = article.Series,
 				}
 			}, apiKey);
 		}

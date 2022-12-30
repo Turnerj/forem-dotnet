@@ -7,20 +7,20 @@ namespace Forem.Api
 	public interface IArticlesService
 	{
 		/// <summary>
-		/// Creates an article with the given markdown. Returns the new created article.
+		/// Creates an article. Returns the new created article.
 		/// </summary>
 		/// <param name="apiKey">The API key associated to the account that the article is created under.</param>
-		/// <param name="markdown">The article body, including any front matter.</param>
+		/// <param name="article">The article to create.</param>
 		/// <returns></returns>
-		Task<UserArticle> CreateArticleAsync(string apiKey, string markdown);
+		Task<UserArticle> CreateArticleAsync(string apiKey, ArticlePayload article);
 		/// <summary>
 		/// Updates the article with the specified ID. Returns the updated article.
 		/// </summary>
 		/// <param name="apiKey">The API key associated to the account that the article is created under.</param>
 		/// <param name="id">The existing article ID.</param>
-		/// <param name="markdown">The article body, including any front matter.</param>
+		/// <param name="article">The article to update.</param>
 		/// <returns></returns>
-		Task<UserArticle> UpdateArticleAsync(string apiKey, int id, string markdown);
+		Task<UserArticle> UpdateArticleAsync(string apiKey, int id, ArticlePayload article);
 		/// <summary>
 		/// Retrieves all published articles, ordered by descending popularity.
 		/// </summary>
